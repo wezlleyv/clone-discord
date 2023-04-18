@@ -5,10 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}"/>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <title>Discord Clone</title>
 </head>
 <body>
-    {{ user.name }}
+    <main>
+        <aside>
+            <div class="channels">
+                {% if me %} 
+                <div class="meactive"  style="background-image: url('{% static 'images/logo-discord.png' %}');"></div>
+                {% endif %}
+            </div>
+            <div class="info">
+
+                <div></div>
+                <div></div>
+
+                <div class="mini-profile">
+                    <div>{{ user.name}}</div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </aside>
+        <section>
+        </section>
+    </main>
 </body>
 </html>

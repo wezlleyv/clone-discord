@@ -1,0 +1,66 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.32fr 1fr;
+}
+
+main section {
+    background-color: #36393e;
+}
+
+main aside {
+    display: grid;
+    grid-template-columns: .32fr 1fr;
+}
+
+main aside .info {
+    background-color: #282b30;
+    display: grid;
+    grid-template-rows: .32fr 1fr 80px;
+}
+
+main aside .info .mini-profile {
+    background-color: #1e2124;
+    display: grid;
+    grid-template-columns: 1fr .3fr .3fr;
+}
+
+main aside .channels {
+    background-color: #1e2124;
+    display: grid;
+    justify-content:center;
+}
+
+main aside .channels .me {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #36393e;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+}
+
+main aside .channels .meactive {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-top: 10px;
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    border-radius: 30%;
+    background-color: #7289da;
+}
+
+main aside .channels .me:hover {
+    border-radius: 30%;
+    background-color: #7289da;
+}
