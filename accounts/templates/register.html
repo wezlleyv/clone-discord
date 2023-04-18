@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>Discord Clone</title>
+</head>
+<body>
+    <main style="background-image: url('{% static 'images/background-login.webp' %}');">
+        <section style="width: 30%; grid-template-columns: 1fr;">
+            <form action="" method="POST">
+                <span style="font-size: 1.5rem; color: white; justify-self: center;">Create an account</span>
+
+                {% csrf_token %}
+                {% for field in form %}
+                    <div style="margin: 10px 0px;" id="label"><span style="font-size: 0.7rem; font-weight: bolder;">{{ field.label }}</span>{{ field }}</div>
+                {% endfor %}
+
+                <button id="login" type="submit">Continue</button>
+                <a id="forgot" style="margin-top: 1rem;" href="/login">Already have an account?</a>
+            </form>
+        </section>
+</body>
+</html>

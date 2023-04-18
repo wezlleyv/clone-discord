@@ -17,7 +17,7 @@
                 <span style="justify-self: center; margin: 1rem;">We're so exicited to see you again!</span>
                 {% csrf_token %}
                 {% for field in form %}
-                    <div id="label"><span style="font-size: 0.9rem; font-weight: bolder;">{{ field.label }} <span style="color:red;">*</span></span>{{ field }}</div>
+                    <div id="label"><span style="font-size: 0.7rem; font-weight: bolder;">{{ field.label }} <span style="color:red;">*</span></span>{{ field }}</div>
                 {% endfor %}
 
                 <a id="forgot" href="forgot">Forgot your password?</a>
