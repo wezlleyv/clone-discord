@@ -21,13 +21,30 @@ main aside {
 main aside .info {
     background-color: #282b30;
     display: grid;
-    grid-template-rows: .32fr 1fr 80px;
+    grid-template-rows: .32fr 1fr 50px;
 }
 
 main aside .info .mini-profile {
+    font-size: 13px;
     background-color: #1e2124;
     display: grid;
     grid-template-columns: 1fr .3fr .3fr;
+}
+
+main aside .info .mini-profile #me {
+    color: white;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    justify-content: center;
+}
+
+main aside .info .mini-profile #photo {
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-size: 190%;
 }
 
 main aside .channels {

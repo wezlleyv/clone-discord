@@ -19,20 +19,25 @@ class CustomUserManager(UserManager):
     def create_user(self, email=None, name=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('photo', 'default.jpeg')
         return self._create_user(email, name, password, **extra_fields)
     
     def create_superuser(self, email=None, name=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('photo', 'default.jpeg')
         return self._create_user(email, name, password, **extra_fields)
     
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(blank=True, default='', unique=True)
-    name = models.CharField(max_length=255, blank=True, default='')
+    name = models.CharField(max_length=255, blank=True, null=True, default='')
+    photo = models.ImageField(upload_to="user/", default='default.jpeg', blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+
+    server_list = models.CharField(max_length=10000,default='')
 
     date_joined = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField(blank=True, null=True)

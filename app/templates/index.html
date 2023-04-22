@@ -15,15 +15,29 @@
             <div class="channels">
                 {% if me %} 
                 <div class="meactive"  style="background-image: url('{% static 'images/logo-discord.png' %}');"></div>
-                {% endif %}
+                {% else %}
+                <a href="/channels/@me"><div class="me"  style="background-image: url('{% static 'images/logo-discord.png' %}');"></div>
+                </a>{% endif %}
             </div>
             <div class="info">
 
-                <div></div>
-                <div></div>
+                {% if me %}
+                    <div></div>
+                    <div></div>
+                {% else %}
+                    <div>{{ server.name }}</div>
+                    <div></div>
+                {% endif %}
 
                 <div class="mini-profile">
-                    <div>{{ user.name}}</div>
+                    <div id="me">
+                        <div id="photo" style="margin: auto; background-image: url('/media/{{user.photo}}');"></div>
+                        <div style="margin: auto 0px;">
+                            <span>{{user.name}}</span>
+                            <br>
+                            <span>#0000</span>
+                        </div>
+                    </div>
                     <div></div>
                     <div></div>
                 </div>

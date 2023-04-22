@@ -31,6 +31,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+LOCAL_APPS = [
+    'app',
+    'accounts',
+    'channels',
+]
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,9 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
-    'accounts',
-]
+] + LOCAL_APPS
+
 
 AUTH_USER_MODEL  = 'accounts.User'
 
@@ -125,6 +131,7 @@ MEDIA_URL = '/media/'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+PHOTO_DEFAULT_ROOT = os.path.join('static', 'photodefault.jpeg')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
