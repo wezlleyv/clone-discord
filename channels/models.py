@@ -13,4 +13,5 @@ class Server(models.Model):
 class Channels(models.Model):
     ID = models.AutoField(primary_key=True)
     id_to_server = models.IntegerField()
+    icon = models.CharField(default="static/images/iconsCH/hastag.png", max_length=1000)
     name = models.CharField(max_length=30)

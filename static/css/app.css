@@ -21,7 +21,12 @@ main aside {
 main aside .info {
     background-color: #282b30;
     display: grid;
-    grid-template-rows: .32fr 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
+}
+
+main aside .info .top-aside {
+    color: white;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,.4);
 }
 
 main aside .info .mini-profile {
@@ -46,6 +51,40 @@ main aside .info .mini-profile #photo {
     background-repeat: no-repeat;
     background-size: 190%;
 }
+
+main aside .info .channelsServer {
+    display: grid;
+    color: white;
+    gap: .6rem;
+    padding: 8px;
+}
+#Ch {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    padding: 5px;
+}
+
+#Ch:hover {
+    background-color: #303338;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+#iconCH {
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-size: 100%;
+}
+
+main aside .info .channelsServer a {
+    text-decoration: none;
+}
+
+main aside .info .channelsServer li {
+    list-style: none;
+}
+
 
 main aside .channels {
     background-color: #1e2124;

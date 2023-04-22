@@ -22,11 +22,20 @@
             <div class="info">
 
                 {% if me %}
-                    <div></div>
+                    <div class="top-aside"></div>
                     <div></div>
                 {% else %}
-                    <div>{{ server.name }}</div>
-                    <div></div>
+                    <div style="display: flex;" class="top-aside"><span style="margin: auto;">{{ server.name }}</span></div>
+                    <ul style="grid-template-rows: repeat({{numbersCH}}, 30px);" class="channelsServer">
+                        {% for channel in channels %}
+                            <a href="/channels/{{server.ID}}/{{channel.ID}}">
+                                <li id="Ch">
+                                    <div id="iconCH" style="background-image: url('/{{channel.icon}}');"></div>
+                                    <span style="color: white; margin: auto 0px;">{{ channel.name }}</span>
+                                </li>
+                            </a>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
 
                 <div class="mini-profile">
