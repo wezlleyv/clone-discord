@@ -34,17 +34,18 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     'app',
     'accounts',
-    'channels',
+    'channel',
+    'chat',
 ]
 
-
 INSTALLED_APPS = [
+    'daphne',
+    # -----
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 ] + LOCAL_APPS
 
 
@@ -79,6 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+ASGI_APPLICATION = 'core.asgi.application'
 
 
 # Database

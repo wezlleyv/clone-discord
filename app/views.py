@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 
-from channels.models import *
+from channel.models import *
 
 @login_required(login_url='/login/')
 def my_view(request):
