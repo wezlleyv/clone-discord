@@ -53,6 +53,10 @@
             </div>
         </aside>
         <section>
+            {% if me %}
+            {% else %}
+                {% include "room.html" %}
+            {% endif %}
         </section>
     </main>
 </body>

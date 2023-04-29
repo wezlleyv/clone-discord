@@ -14,7 +14,7 @@ def my_view(request):
     return render(request,'index.html', context)
 
 @login_required(login_url='/login/')
-def channel_view(request,_id):
+def channel_view(request,_id, idChannel):
     server = Server.objects.filter(ID__exact=_id)
     channels = Channels.objects.filter(id_to_server__exact=_id)
     context = {}
@@ -23,4 +23,5 @@ def channel_view(request,_id):
     context['server'] = server[0]
     context['channels'] = channels
     context['numbersCH'] = len(channels)
+    context['room_name'] = "lobby"
     return render(request, 'index.html', context)

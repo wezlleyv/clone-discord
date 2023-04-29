@@ -4,5 +4,5 @@ from .views import *
 
 urlpatterns = [
     path("@me", my_view, name="app"),
-    path("<str:_id>", channel_view),
+    path("<str:_id>/<str:idChannel>", channel_view),
 ]
