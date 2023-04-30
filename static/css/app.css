@@ -121,6 +121,16 @@ main aside .channels .me:hover {
     background-color: #7289da;
 }
 
+main section #channelView {
+    display: grid;
+    grid-template-rows: 1fr 50px;
+}
+
+main section #channelView .messages {
+    overflow-y: scroll;
+    height: calc(100vh - 50px);
+}
+
 main section .uniqueMSG {
     display: grid;
     grid-template-columns: 50px 1fr;

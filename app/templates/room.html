@@ -1,20 +1,23 @@
-<div class="messages">
-    {% for msg in messages %}
-        <div class="uniqueMSG">
-            <div id="minphoto"> photo </div>
-            <div id="content-msg">
-                <div id="userstats">
-                    <span id="name">{{ msg.user }}</span>
-                    <span id="date">{{ msg.date }}</span>
+<div id="channelView">
+    <div class="messages">
+        {% for msg in messages %}
+            <div class="uniqueMSG">
+                <div id="minphoto"> photo </div>
+                <div id="content-msg">
+                    <div id="userstats">
+                        <span id="name">{{ msg.user }}</span>
+                        <span id="date">{{ msg.date }}</span>
+                    </div>
+                    <span id="content">{{msg.content}}</span>
                 </div>
-                <span id="content">{{msg.content}}</span>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    <div>
+        <input id="chat-message-input" type="text" size="100"><br>
+        <input style="display: none;" id="chat-message-submit" type="button" value="Send">
+    </div>
 </div>
-
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -42,8 +45,14 @@
             </div>`
 
             document.querySelector('.messages').insertAdjacentHTML('beforeend',msg);
+            const labelChat = document.querySelector(".messages")
+            labelChat.scrollTo(0, labelChat.scrollHeight)
         };
 
+        function scrollmv() {
+            const labelChat = document.querySelector(".messages")
+            labelChat.scrollTo(0, labelChat.scrollHeight)
+        }
 
 
         chatSocket.onclose = function(e) {
