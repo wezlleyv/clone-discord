@@ -29,6 +29,7 @@ class CustomUserManager(UserManager):
         return self._create_user(email, name, password, **extra_fields)
     
 class User(AbstractBaseUser, PermissionsMixin):
+    ID = models.AutoField(primary_key=True)
     email = models.EmailField(blank=True, default='', unique=True)
     name = models.CharField(max_length=255, blank=True, null=True, default='')
     photo = models.ImageField(upload_to="user/", default='default.jpeg', blank=True, null=True)

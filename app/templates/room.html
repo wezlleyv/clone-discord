@@ -1,4 +1,18 @@
-<textarea id="chat-log" cols="100" rows="20"></textarea><br>
+<div class="messages">
+    {% for msg in messages %}
+        <div class="uniqueMSG">
+            <div id="minphoto"> photo </div>
+            <div id="content-msg">
+                <div id="userstats">
+                    <span id="name">{{ msg.user }}</span>
+                    <span id="date">{{ msg.date }}</span>
+                </div>
+                <span id="content">{{msg.content}}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
@@ -15,8 +29,22 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            const msg = `
+            <div class="uniqueMSG">
+                <div id="minphoto"> photo </div>
+                <div id="content-msg">
+                    <div id="userstats">
+                        <span id="name">${data.user}<span>
+                        <span id="date">Now</span>
+                    </div>
+                    <span id="content">${data.message}</span>
+                </div>
+            </div>`
+
+            document.querySelector('.messages').insertAdjacentHTML('beforeend',msg);
         };
+
+
 
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
@@ -31,8 +59,11 @@
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
+            const userName = document.querySelector('#myusername');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
+                'user': userName.textContent,
+                'channel_id': roomName,
                 'message': message
             }));
             messageInputDom.value = '';

@@ -120,3 +120,21 @@ main aside .channels .me:hover {
     border-radius: 30%;
     background-color: #7289da;
 }
+
+main section .uniqueMSG {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    padding: 10px;
+}
+
+main section .uniqueMSG #userstats {
+    color: #a3a3a3;
+}
+main section .uniqueMSG #date {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+main section .uniqueMSG #content {
+    color: white;
+}
