@@ -18,6 +18,13 @@
                 {% else %}
                 <a href="/channels/@me"><div class="me"  style="background-image: url('{% static 'images/logo-discord.png' %}');"></div>
                 </a>{% endif %}
+
+                {% for ch in serverls %}
+                    <a href="/channels/{{ch}}"><div class="serverls" style="background-image: url('{% static 'images/logo-discord.png' %}');" ></div></a>
+                {% endfor %}
+
+                <a><div class="serverls"></div></a>
+                
             </div>
             <div class="info">
 
@@ -58,6 +65,17 @@
                 {% include "room.html" %}
             {% endif %}
         </section>
+        <article>
+            <div id="top"></div>
+            <div class="userlistch">
+                {% for userS in users %}
+                <div id="usermin">
+                    <div id="minphoto" style="background-image: url('/media/{{userS.photo}}');"></div>
+                    <div>{{userS.name}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </article>
     </main>
 </body>
 </html>

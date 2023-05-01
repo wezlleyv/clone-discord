@@ -6,7 +6,7 @@
 main {
     height: 100vh;
     display: grid;
-    grid-template-columns: 0.32fr 1fr;
+    grid-template-columns: 0.32fr 1fr 200px;
 }
 
 main section {
@@ -89,6 +89,8 @@ main aside .info .channelsServer li {
 main aside .channels {
     background-color: #1e2124;
     display: grid;
+    grid-template-rows: 70px;
+    grid-auto-rows: 58px;
     justify-content:center;
 }
 
@@ -123,12 +125,22 @@ main aside .channels .me:hover {
 
 main section #channelView {
     display: grid;
-    grid-template-rows: 1fr 50px;
+    grid-template-rows: 50px 1fr 70px;
+}
+
+main section .topch {
+    color: white;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,.4);
+    display: flex;
+}
+
+main section .topch a {
+    margin: auto 0px auto 1rem;
 }
 
 main section #channelView .messages {
     overflow-y: scroll;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 120px);
 }
 
 main section .uniqueMSG {
@@ -140,6 +152,17 @@ main section .uniqueMSG {
 main section .uniqueMSG #userstats {
     color: #a3a3a3;
 }
+
+main section .uniqueMSG #minphoto {
+    border-radius: 100%;
+    background-size: 70%;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1e2124;
+}
+
 main section .uniqueMSG #date {
     font-size: 12px;
     opacity: 0.6;
@@ -147,4 +170,78 @@ main section .uniqueMSG #date {
 
 main section .uniqueMSG #content {
     color: white;
+}
+
+#chatsend {
+    display: flex;
+}
+
+#chat-message-input {
+    margin: 0px auto auto auto;
+    padding: 10px;
+    width: 90%;
+    border-radius: 7px;
+    font-size: 16px;
+    background-color: #444649;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+#chat-message-input:focus {
+    outline: none;
+    border: none;
+}
+
+.serverls {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #36393e;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+}
+
+#addserver {
+    text-align: center;
+}
+
+main article {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+
+main article #top {
+    background-color: #36393e;
+}
+
+main article #minphoto {
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100% ;
+    background-color: #1e2124;
+}
+
+main article .userlistch {
+    background-color: #303338;
+    display: grid;
+    grid-auto-rows: 30px;
+    gap: 10px;
+    color: white;
+    padding: 10px;
+}
+
+main article #usermin {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+}
+
+main article #usermin:hover {
+    background-color: #36393e;
 }

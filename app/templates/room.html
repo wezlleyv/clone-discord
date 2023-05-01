@@ -1,8 +1,11 @@
+{% load static %}
+
 <div id="channelView">
+    <div class="topch"><a>Chat-geral</a></div>
     <div class="messages">
         {% for msg in messages %}
             <div class="uniqueMSG">
-                <div id="minphoto"> photo </div>
+                <div id="minphoto" style="background-image: url('{% static 'images/logo-discord.png' %}');"> </div>
                 <div id="content-msg">
                     <div id="userstats">
                         <span id="name">{{ msg.user }}</span>
@@ -13,8 +16,8 @@
             </div>
         {% endfor %}
     </div>
-    <div>
-        <input id="chat-message-input" type="text" size="100"><br>
+    <div id="chatsend">
+        <input placeholder="Escrever em #{{ CHactual.name }}" id="chat-message-input" type="text" size="100"><br>
         <input style="display: none;" id="chat-message-submit" type="button" value="Send">
     </div>
 </div>
@@ -34,7 +37,7 @@
             const data = JSON.parse(e.data);
             const msg = `
             <div class="uniqueMSG">
-                <div id="minphoto"> photo </div>
+                <div id="minphoto" style="background-image: url('{% static 'images/logo-discord.png' %}');"></div>
                 <div id="content-msg">
                     <div id="userstats">
                         <span id="name">${data.user}<span>
@@ -73,7 +76,7 @@
             chatSocket.send(JSON.stringify({
                 'user': userName.textContent,
                 'channel_id': roomName,
-                'message': message
+                'message': message,
             }));
             messageInputDom.value = '';
         };
