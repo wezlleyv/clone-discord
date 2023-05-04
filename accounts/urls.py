@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/', loginasview, name="login"),
     path("register/", register, name="register"),
     path('logout/', logoutasview, name="logout"),
+    path("", loginasview)
 ]
