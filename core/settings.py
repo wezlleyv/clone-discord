@@ -23,8 +23,8 @@ DEBUG = True
 #SECRET_KEY = os.getenv('SECRET_KEY')
 #DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'daphne']
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0']
 
 # Application definition
 
