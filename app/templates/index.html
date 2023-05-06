@@ -23,7 +23,7 @@
                     <a href="/channels/{{ch}}"><div class="serverls" style="background-image: url('{% static 'images/logo-discord.png' %}');" ></div></a>
                 {% endfor %}
 
-                <a><div class="serverls"></div></a>
+                <a><div class="serverls" style="background-image: url({% static 'images/plus.png' %});" ></div></a>
                 
             </div>
             <div class="info">
@@ -77,5 +77,34 @@
             </div>
         </article>
     </main>
+
+    <div id="addServer">
+        <span style="font-size: 1.5rem;">Crie um servidor</span>
+        <span style="opacity: 0.7; font-size: 1rem;">Seu servidor é onde você e seus amigos se reúnem. Crie o seu e comece a interagir</span>
+    
+        <a id="sendforme" onclick="changeMenu()">
+            <div id="choice" style="display: grid; grid-template-columns: 1fr 30px;">
+                <span style="margin: auto 0px; text-align: left;">Criar o meu</span>
+                <div id="iconAS" style="background-image: url({% static 'images/right.png' %});"></div>
+            </div>
+        </a>
+    </div>
 </body>
+
+<script>
+    function changeMenu() {
+        document.querySelector("#sendforme").remove()
+        const html = `
+        <form action='/createserver' method='POST'>
+            <label>NOME DO SERVIDOR</label>
+            <input name='nameserver'></input>
+        </form>
+        `
+
+        document.querySelector('#addServer').insertAdjacentHTML('beforeend',html);
+
+        document.querySelector("#choice").remove()
+    }
+</script>
+
 </html>

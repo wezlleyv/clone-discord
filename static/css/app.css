@@ -245,3 +245,49 @@ main article #usermin {
 main article #usermin:hover {
     background-color: #36393e;
 }
+
+#addServer {
+    position: absolute;
+    width: 50vh;
+    height: 22vh;
+    background-color: #ffffff;
+    display: grid;
+    text-align: center;
+    grid-template-rows: 30px 50px 70px;
+    padding: 20px;
+
+    border-radius: 6px;
+    top: calc(50% - 11vh - 20px);
+    left: calc(50% - 25vh - 20px);
+}
+
+#addServer #iconAS {
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#addServer #choice {
+    border: 1px solid #dadada;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#addServer #choice:hover {
+    background-color: #dadada;
+}
+
+#addServer form {
+    display: grid;
+    text-align: left;
+    gap: 10px;
+}
+
+#addServer form input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dadada;
+}

@@ -52,7 +52,18 @@ def channel_view(request,_id, idChannel):
     
     return render(request, 'index.html', context)
 
-
 def redirect_view(request, _id):
     channels = Channels.objects.filter(id_to_server__exact=_id)
     return HttpResponseRedirect(f'{_id}/{channels[0].ID}')
+
+@login_required(login_url='/login/')
+def create_server(request):
+    if request.method == 'POST':
+        nameNewServer = request.POST['nameserver']
+        newServer = Server(name=nameNewServer)
+        newServer.save()
+
+        firstChannel = Channels(name='chat geral', id_to_server=newServer.ID)
+        firstChannel.save()
+
+        return HttpResponse(f'channel/{newServer.ID}')
