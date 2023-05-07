@@ -5,6 +5,7 @@ from django.utils import timezone
 class Server(models.Model):
     ID = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
+    user_in_server = models.CharField(max_length=300, default='''{"users": []}''')
     photo = models.ImageField(upload_to="server/", default="default.jpeg")
 
     def __str__(self):

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
@@ -12,7 +12,6 @@ def app_view(request):
     name = Server.objects.all()
     context = {}
 
-    # slj = server list json
     serverListUser = request.user.server_list_json
     serverListUser = json.loads(serverListUser)
 
@@ -33,9 +32,15 @@ def channel_view(request,_id, idChannel):
     CHactual = Channels.objects.filter(ID__exact=idChannel)
 
     if _id == '1':
-        users = User.objects.all()
+        server_users = User.objects.all()
     else:
-        users = None
+        users = []
+        server_users = server[0].user_in_server
+        server_users = json.loads(server_users)['users']
+        for IDuser in server_users:
+            users.append(User.objects.filter(ID__exact=IDuser)[0])
+
+        server_users = users
 
     serverListUser = request.user.server_list_json
     serverListUser = json.loads(serverListUser)
@@ -51,30 +56,41 @@ def channel_view(request,_id, idChannel):
         'messages': messages,
         'CHactual': CHactual[0],
         'serverls': serverListUser['server-list'],
-        'users': users
+        'users': server_users
         })
     
     return render(request, 'index.html', context)
 
-def redirect_view(request, _id):
-    channels = Channels.objects.filter(id_to_server__exact=_id)
-    return HttpResponseRedirect(f'{_id}/{channels[0].ID}')
-
 @login_required(login_url='/login/')
 def create_server_view(request):
     if request.method == 'POST':
-        newServerName = request.POST['nameserver']
-        newSever = Server(name=newServerName)
-        newSever.save()
+        user = request.user # get user info
 
-        firstChannel = Channels(name="Chat geral", id_to_server=newSever.ID)
-        firstChannel.save()
+        newServerName = request.POST['nameserver'] # get a name of server with method POST
+        newServer = Server(name=newServerName) # create object Server
+        
+        serverInUser = newServer.user_in_server # get actually user in server
+        serverInUserJson = json.loads(serverInUser) # load json with string
+        serverInUserJson['users'].append(user.ID) # add new user for this server
 
-        user = request.user
-        serverListJson = user.server_list_json
-        serverListJson = json.loads(serverListJson)
-        serverListJson["server-list"].append(newSever.ID)
-        user.server_list_json = '''{"server-list": %s }''' % (serverListJson['server-list'])
-        user.save()
+        newServer.user_in_server = '''{"users": %s}''' % (serverInUserJson['users']) # concatenate for send for DB
 
-        return HttpResponseRedirect(f"/channels/{newSever.ID}")
+        newServer.save() # save a new Server
+
+        firstChannel = Channels(name="Chat geral", id_to_server=newServer.ID) # create a default channel
+        firstChannel.save() # save a new Channel
+
+
+        serverListJson = user.server_list_json # get a server list of user
+        serverListJson = json.loads(serverListJson) # load json
+        serverListJson["server-list"].append(newServer.ID) # add a new server for user
+        user.server_list_json = '''{"server-list": %s }''' % (serverListJson['server-list']) # concatenate and send for DB
+        user.save() # save info of user
+
+        return HttpResponseRedirect(f"/channels/{newServer.ID}") # redirect for a new server
+
+
+
+def redirect_view(request, _id):
+    channels = Channels.objects.filter(id_to_server__exact=_id)
+    return HttpResponseRedirect(f'{_id}/{channels[0].ID}')
