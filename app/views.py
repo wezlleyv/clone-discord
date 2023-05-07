@@ -8,18 +8,19 @@ from accounts.models import *
 import json
 
 @login_required(login_url='/login/')
-def my_view(request):
+def app_view(request):
     name = Server.objects.all()
     context = {}
 
     # slj = server list json
-    slj = json.loads('''{"server-list": [1]}''')['server-list']
+    serverListUser = request.user.server_list_json
+    serverListUser = json.loads(serverListUser)
 
     context.update({
         'me': True,
         'user': request.user,
         'server': name,
-        'serverls': slj,
+        'serverls': serverListUser['server-list'],
     })
 
     return render(request,'index.html', context)
@@ -36,6 +37,9 @@ def channel_view(request,_id, idChannel):
     else:
         users = None
 
+    serverListUser = request.user.server_list_json
+    serverListUser = json.loads(serverListUser)
+
     context = {}
     context.update({
         'me': False,
@@ -46,7 +50,7 @@ def channel_view(request,_id, idChannel):
         'room_name': idChannel,
         'messages': messages,
         'CHactual': CHactual[0],
-        'serverls': json.loads('''{"server-list": [1]}''')['server-list'],
+        'serverls': serverListUser['server-list'],
         'users': users
         })
     
@@ -57,13 +61,20 @@ def redirect_view(request, _id):
     return HttpResponseRedirect(f'{_id}/{channels[0].ID}')
 
 @login_required(login_url='/login/')
-def create_server(request):
+def create_server_view(request):
     if request.method == 'POST':
-        nameNewServer = request.POST['nameserver']
-        newServer = Server(name=nameNewServer)
-        newServer.save()
+        newServerName = request.POST['nameserver']
+        newSever = Server(name=newServerName)
+        newSever.save()
 
-        firstChannel = Channels(name='chat geral', id_to_server=newServer.ID)
+        firstChannel = Channels(name="Chat geral", id_to_server=newSever.ID)
         firstChannel.save()
 
-        return HttpResponse(f'channel/{newServer.ID}')
+        user = request.user
+        serverListJson = user.server_list_json
+        serverListJson = json.loads(serverListJson)
+        serverListJson["server-list"].append(newSever.ID)
+        user.server_list_json = '''{"server-list": %s }''' % (serverListJson['server-list'])
+        user.save()
+
+        return HttpResponseRedirect(f"/channels/{newSever.ID}")

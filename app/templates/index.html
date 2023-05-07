@@ -95,7 +95,8 @@
     function changeMenu() {
         document.querySelector("#sendforme").remove()
         const html = `
-        <form action='/createserver' method='POST'>
+        <form action='/channels/createserver' method='POST'>
+            {% csrf_token %}
             <label>NOME DO SERVIDOR</label>
             <input name='nameserver'></input>
         </form>

@@ -32,7 +32,6 @@ LOCAL_APPS = [
     'app',
     'accounts',
     'channel',
-    'chat',
 ]
 
 INSTALLED_APPS = [
