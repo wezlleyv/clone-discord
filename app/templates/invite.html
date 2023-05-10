@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/invite.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>Discord | {{ serverName }}</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div id="photo" style="background-image: url('/media/{{serverPhoto}}');"></div>
+            <span style="font-size: 20px; color: white; text-align: center;">{{serverName}}</span>
+            <span style="text-align: center; color: white; opacity: 0.6;">Esse server tem {{serverUsers}} membros</span>
+            <form method="POST" id="form">
+                {% csrf_token %}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

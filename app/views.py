@@ -89,6 +89,36 @@ def create_server_view(request):
 
         return HttpResponseRedirect(f"/channels/{newServer.ID}") # redirect for a new server
 
+@login_required(login_url="/login/")
+def invite_server_view(request, serverId):
+    server = Server.objects.filter(ID__exact=serverId)[0]
+
+    users = json.loads(server.user_in_server)['users']
+
+    if request.user.ID in users:
+        return HttpResponseRedirect(f"/channels/{serverId}")
+
+    context = {}
+    context.update({
+        "serverName": server.name,
+        "serverPhoto": server.photo,
+        "serverUsers": len(users),
+    }
+    )
+    if request.method == "POST":
+        user = request.user
+        userServer = json.loads(user.server_list_json)['server-list']
+        userServer.append(serverId)
+        user.server_list_json = '''{"server-list": %s}''' % (userServer)
+        user.save()
+        
+        users.append(user.ID)
+        server.user_in_server = '''{"users": %s}''' % users
+        server.save()
+
+
+    return render(request, 'invite.html', context)
+
 def redirect_view(request, _id):
     channels = Channels.objects.filter(id_to_server__exact=_id)
     return HttpResponseRedirect(f'{_id}/{channels[0].ID}')
