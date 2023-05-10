@@ -2,7 +2,25 @@
     margin: 0px;
     padding: 0px;
 }
-
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #2f3135;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #282b30;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #303338;
+  }
 main {
     height: 100vh;
     display: grid;
@@ -203,6 +221,9 @@ main section .uniqueMSG #content {
     background-position: center;
     background-size: 60%;
     background-repeat: no-repeat;
+}
+.serverls:hover {
+    border-radius: 30%;
 }
 
 .serverlsactive {

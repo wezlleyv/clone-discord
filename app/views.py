@@ -56,7 +56,8 @@ def channel_view(request,_id, idChannel):
         'messages': messages, # send all messages about the channel
         'CHactual': CHactual[0], # send what channel user stay
         'serverls': serverListUser['server-list'], # send what server user in
-        'users': server_users # send all users in server
+        'users': server_users, # send all users in server
+        'serverActual': int(_id),
         })
     
     return render(request, 'index.html', context)

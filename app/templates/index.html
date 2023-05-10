@@ -20,7 +20,13 @@
                 </a>{% endif %}
 
                 {% for ch in serverls %}
+
+                    {% if serverActual == ch %}
+                    <a href="/channels/{{ch}}"><div class="serverlsactive" style="background-image: url('{% static 'images/logo-discord.png' %}');" ></div></a>
+                    {% else %}
                     <a href="/channels/{{ch}}"><div class="serverls" style="background-image: url('{% static 'images/logo-discord.png' %}');" ></div></a>
+                    {% endif %}
+                
                 {% endfor %}
 
                 <a><div id="adsv" onclick="ShowCreateServer()" class="serverls" style="background-image: url({% static 'images/plus.png' %});" ></div></a>
