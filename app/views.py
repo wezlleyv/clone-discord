@@ -26,37 +26,37 @@ def app_view(request):
 
 @login_required(login_url='/login/')
 def channel_view(request,_id, idChannel):
-    server = Server.objects.filter(ID__exact=_id)
-    channels = Channels.objects.filter(id_to_server__exact=_id)
-    messages = Message.objects.filter(id_to_channel__exact=idChannel)
-    CHactual = Channels.objects.filter(ID__exact=idChannel)
+    server = Server.objects.filter(ID__exact=_id) # get a server 
+    channels = Channels.objects.filter(id_to_server__exact=_id) # get channels about the server
+    messages = Message.objects.filter(id_to_channel__exact=idChannel) # get messages about the channel
+    CHactual = Channels.objects.filter(ID__exact=idChannel) # get channel about user in
 
     if _id == '1':
-        server_users = User.objects.all()
+        server_users = User.objects.all() # if server equal Server Universal, get all users
     else:
-        users = []
-        server_users = server[0].user_in_server
-        server_users = json.loads(server_users)['users']
-        for IDuser in server_users:
+        users = [] 
+        server_users = server[0].user_in_server # get users in server
+        server_users = json.loads(server_users)['users'] # load json
+        for IDuser in server_users: # for for append users to list
             users.append(User.objects.filter(ID__exact=IDuser)[0])
 
-        server_users = users
+        server_users = users 
 
-    serverListUser = request.user.server_list_json
-    serverListUser = json.loads(serverListUser)
+    serverListUser = request.user.server_list_json # get user list server
+    serverListUser = json.loads(serverListUser) # load jsons
 
-    context = {}
+    context = {} # prepare array
     context.update({
-        'me': False,
-        'user': request.user,
-        'server': server[0],
-        'channels': channels,
-        'numberCH': len(channels),
-        'room_name': idChannel,
-        'messages': messages,
-        'CHactual': CHactual[0],
-        'serverls': serverListUser['server-list'],
-        'users': server_users
+        'me': False, # me equal false for template
+        'user': request.user, # send user info
+        'server': server[0], # send server info
+        'channels': channels, # send all channel in server
+        'numberCH': len(channels), # send number about channels in server
+        'room_name': idChannel, # send ID channel for script websocket
+        'messages': messages, # send all messages about the channel
+        'CHactual': CHactual[0], # send what channel user stay
+        'serverls': serverListUser['server-list'], # send what server user in
+        'users': server_users # send all users in server
         })
     
     return render(request, 'index.html', context)
@@ -88,8 +88,6 @@ def create_server_view(request):
         user.save() # save info of user
 
         return HttpResponseRedirect(f"/channels/{newServer.ID}") # redirect for a new server
-
-
 
 def redirect_view(request, _id):
     channels = Channels.objects.filter(id_to_server__exact=_id)

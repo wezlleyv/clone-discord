@@ -251,7 +251,7 @@ main article #usermin:hover {
     width: 50vh;
     height: 22vh;
     background-color: #ffffff;
-    display: grid;
+    display: none;
     text-align: center;
     grid-template-rows: 30px 50px 70px;
     padding: 20px;

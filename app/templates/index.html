@@ -23,7 +23,7 @@
                     <a href="/channels/{{ch}}"><div class="serverls" style="background-image: url('{% static 'images/logo-discord.png' %}');" ></div></a>
                 {% endfor %}
 
-                <a><div class="serverls" style="background-image: url({% static 'images/plus.png' %});" ></div></a>
+                <a><div onclick="ShowCreateServer()" class="serverls" style="background-image: url({% static 'images/plus.png' %});" ></div></a>
                 
             </div>
             <div class="info">
@@ -78,7 +78,7 @@
         </article>
     </main>
 
-    <div id="addServer">
+    <div class="hide" id="addServer">
         <span style="font-size: 1.5rem;">Crie um servidor</span>
         <span style="opacity: 0.7; font-size: 1rem;">Seu servidor é onde você e seus amigos se reúnem. Crie o seu e comece a interagir</span>
     
@@ -92,6 +92,21 @@
 </body>
 
 <script>
+    function ShowCreateServer() {
+        const div = document.querySelector("#addServer");
+
+        if (div.classList.value == "hide") {
+            div.classList.remove("hide")
+            div.classList.add("show")
+            div.style.display = "grid"
+        }
+        else if (div.classList.value == "show") {
+            div.classList.remove("show")
+            div.classList.add("hide")
+            div.style.display = "none"
+        }
+    }
+
     function changeMenu() {
         document.querySelector("#sendforme").remove()
         const html = `
