@@ -54,8 +54,8 @@
                             <span>#0000</span>
                         </div>
                     </div>
-                    <div></div>
-                    <div></div>
+                    <a href="/logout" style="margin: auto 0px;"><div id="logout" style="background-image: url('{% static 'images/logout.png' %}');"></div></a>
+                    <div id="settings" style="background-image: url('{% static 'images/settings.png' %}');"></div>
                 </div>
             </div>
         </aside>
@@ -66,7 +66,13 @@
             {% endif %}
         </section>
         <article>
-            <div id="top"></div>
+            <div id="top">
+                {% if me %}
+                {% else %}
+                <div id="clipboard" style="background-image: url('{% static 'images/add-user.png' %}');" onclick="CopyInvite()" class="/channels/invite/{{server.ID}}"></div>
+                {% endif %}
+            </div>
+
             <div class="userlistch">
                 {% for userS in users %}
                 <div id="usermin">
@@ -95,6 +101,16 @@
 </body>
 
 <script>
+    function CopyInvite() {
+        const clip = document.querySelector("#clipboard")
+
+        var host = window.location.host
+
+        var copyText = host + clip.className
+
+        navigator.clipboard.writeText(copyText)
+    }
+
     function ShowCreateServer() {
         const div = document.querySelector("#addServer");
         const adsv = document.querySelector("#adsv")

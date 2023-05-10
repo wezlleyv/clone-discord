@@ -95,7 +95,7 @@ def invite_server_view(request, serverId):
 
     users = json.loads(server.user_in_server)['users']
 
-    if request.user.ID in users:
+    if request.user.ID in users or serverId == 1:
         return HttpResponseRedirect(f"/channels/{serverId}")
 
     context = {}

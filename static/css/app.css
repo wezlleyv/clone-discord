@@ -314,3 +314,35 @@ main article #usermin:hover {
     top:0px;
     display:none;
 }
+
+#clipboard {
+    width: 40px;
+    height: 40px;
+    margin: auto 0px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#clipboard:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#logout {
+    width: 20px;
+    height: 20px;
+    margin: auto 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#settings {
+    width: 23px;
+    height: 23px;
+    margin: auto 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
