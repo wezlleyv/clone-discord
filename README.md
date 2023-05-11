@@ -1,6 +1,6 @@
 <div align="center"><img width=400 height=200 src="./static/images/Discord-logo.png"></div>
 
-<h1 align="center"></h1>
+<h1 align="center">Discord</h1>
 
 <div align="center">
   <img src="https://img.shields.io/badge/Made%20with-Python-blue">
