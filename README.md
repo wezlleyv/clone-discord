@@ -2,7 +2,19 @@
 
 <h1 align="center">Discord clone</h1>
 
-## Overview
+
+Tabela de conteúdos
+=================
+<!--ts-->
+   * [Sobre](#Sobre)
+   * [Tabela de Conteudo](#tabela-de-conteudo)
+   * [Instalação](#instalacao)
+      * [Instalação docker Arch](#Instalação com docker no Arch)
+   * [Tecnologias](#tecnologias)
+<!--te-->
+
+
+## Sobre
 Este projeto visa criar um clone da popular plataforma de comunicação Discord usando Python e o framework de desenvolvimento web Django. O objetivo é replicar alguns dos principais recursos e funcionalidades do Discord, como mensagens em tempo real e gerenciamento de servidor. O projeto utilizará os recursos de back-end do Django para lidar com a autenticação do usuário, armazenamento de dados. Além disso, para produção utilizará o servidor web Nginx para gerenciar conexões simultâneas e Docker para automação.
 ## Instalação
 Clone o repositorio no seu diretorio
@@ -19,7 +31,7 @@ Execute o servidor
 ```
 python manage.py runserver
 ```
-## Instalação com docker
+## Instalação com docker no Arch
 Valido somente na distribuição Arch Linux
 Instale o Docker e o Docker-compose
 ```sh
