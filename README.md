@@ -1,3 +1,5 @@
+<img align="center" src="./static/images/Discord-logo.png">
+
 <h1 align="center">Discord clone</h1>
 
 ## Overview
