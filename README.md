@@ -2,6 +2,12 @@
 
 <h1 align="center">Discord clone</h1>
 
+<div align="center">
+  <img src="https://img.shields.io/badge/Made%20with-Python-blue">
+  <img src="https://img.shields.io/badge/Django-4.2-blue">
+  <img src="https://img.shields.io/badge/lincense-MIT-blue">
+</div>
+
 
 Tabela de conteúdos
 =================
