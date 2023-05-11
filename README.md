@@ -8,6 +8,8 @@
   <img src="https://img.shields.io/badge/lincense-MIT-blue">
 </div>
 
+## Sobre
+Este projeto visa criar um clone da popular plataforma de comunicação Discord usando Python e o framework de desenvolvimento web Django. O objetivo é replicar alguns dos principais recursos e funcionalidades do Discord, como mensagens em tempo real e gerenciamento de servidor. O projeto utilizará os recursos de back-end do Django para lidar com a autenticação do usuário, armazenamento de dados. Além disso, para produção utilizará o servidor web Nginx para gerenciar conexões simultâneas e Docker para automação.
 
 Tabela de conteúdos
 =================
@@ -20,8 +22,6 @@ Tabela de conteúdos
 <!--te-->
 
 
-## Sobre
-Este projeto visa criar um clone da popular plataforma de comunicação Discord usando Python e o framework de desenvolvimento web Django. O objetivo é replicar alguns dos principais recursos e funcionalidades do Discord, como mensagens em tempo real e gerenciamento de servidor. O projeto utilizará os recursos de back-end do Django para lidar com a autenticação do usuário, armazenamento de dados. Além disso, para produção utilizará o servidor web Nginx para gerenciar conexões simultâneas e Docker para automação.
 ## Instalação
 Clone o repositorio no seu diretorio
 ```sh
