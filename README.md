@@ -40,6 +40,7 @@ python manage.py runserver
 ## Instalação com docker no Arch
 Valido somente na distribuição Arch Linux
 <p>Instale o Docker e o Docker-compose</p>
+
 ```sh
 sudo pacman -Syu
 sudo pacman -S docker docker-compose
