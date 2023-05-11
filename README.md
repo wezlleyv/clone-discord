@@ -8,8 +8,8 @@ Tabela de conteúdos
 <!--ts-->
    * [Sobre](#Sobre)
    * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-      * [Instalação docker Arch](#Instalação com docker no Arch)
+   * [Instalação](#Instalacao)
+      * [Instalação docker Arch](#Instalação-com-docker-no-Arch)
    * [Tecnologias](#tecnologias)
 <!--te-->
 
