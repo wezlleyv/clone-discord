@@ -5,7 +5,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Made%20with-Python-blue">
   <img src="https://img.shields.io/badge/Django-4.2-blue">
-  <img src="https://img.shields.io/badge/lincense-MIT-blue">
+  <img src="https://img.shields.io/badge/license-MIT-blue">
 </div>
 
 ## Sobre
